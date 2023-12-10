@@ -1,6 +1,8 @@
 package com.mycompany.onCommandPatternTelegramBot.command;
 
+import com.mycompany.onCommandPatternTelegramBot.entity.TelegaUser;
 import com.mycompany.onCommandPatternTelegramBot.service.SendBotMessageService;
+import com.mycompany.onCommandPatternTelegramBot.service.TelegaUserService;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
 /**
@@ -9,16 +11,31 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 public class StartCommand implements Command {
     
     private final SendBotMessageService sendBotMessageService;
+    private final TelegaUserService telegaUserService;
     
     public final static String START_MESSAGE = "Hello! A'm Bot.";
 
-    public StartCommand(SendBotMessageService sendBotMessageService) {
+    public StartCommand(SendBotMessageService sendBotMessageService, TelegaUserService telegaUserService) {
         this.sendBotMessageService = sendBotMessageService;
-    }
-
+        this.telegaUserService = telegaUserService;
+    }    
+    
     @Override
     public void execute(Update update) {
-    sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), START_MESSAGE);
+        String chatId = update.getMessage().getChatId().toString();
+        telegaUserService.findByChatId(chatId).ifPresentOrElse(
+                user -> {
+                    user.setActives(true);
+                    telegaUserService.save(user);
+                }, 
+                ()-> {
+                    TelegaUser telegaUser = new TelegaUser();
+                    telegaUser.setActives(true);
+                    telegaUser.setChatId(chatId);
+                    telegaUserService.save(telegaUser);
+                });
+        
+    sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), START_MESSAGE);    
     }
     
     

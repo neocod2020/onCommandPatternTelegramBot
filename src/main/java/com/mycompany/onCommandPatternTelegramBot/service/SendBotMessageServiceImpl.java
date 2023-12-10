@@ -11,10 +11,10 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 @Service
 public class SendBotMessageServiceImpl implements SendBotMessageService {
     
-    
+    @Autowired
     private final OnCommandPatternTelegramBot onCommandPatternTelegramBot;
 
-    @Autowired
+    
     public SendBotMessageServiceImpl(OnCommandPatternTelegramBot onCommandPatternTelegramBot) {
         this.onCommandPatternTelegramBot = onCommandPatternTelegramBot;
     }    

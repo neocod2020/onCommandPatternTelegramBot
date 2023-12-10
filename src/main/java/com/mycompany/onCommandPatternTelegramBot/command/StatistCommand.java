@@ -5,25 +5,28 @@ import com.mycompany.onCommandPatternTelegramBot.service.TelegaUserService;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
 /**
- * Stop {@link Command}
+ * StatistCommand (@link Command)
  */
-public class StopCommand implements Command {
+public class StatistCommand implements Command {
+    
     private final SendBotMessageService sendBotMessageService;
     private final TelegaUserService telegaUserService;
-    public final static String STOP_MESSAGE = "All your susbscribes are non-active \uD830\uDE1F.";
+    
+    public final static String STATISTIC_MESSAGE = "This Bot use %s users.";
 
-    public StopCommand(SendBotMessageService sendBotMessageService, TelegaUserService telegaUserService) {
+    public StatistCommand(SendBotMessageService sendBotMessageService, TelegaUserService telegaUserService) {
         this.sendBotMessageService = sendBotMessageService;
         this.telegaUserService = telegaUserService;
     }    
-
+    
     @Override
     public void execute(Update update) {
-    sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), STOP_MESSAGE);
-    telegaUserService.findByChatId(update.getMessage().getChatId().toString())
-            .ifPresent(it -> {
-               it.setActives(false);
-               telegaUserService.save(it);
-            });
+        String activesUsersCount = String.valueOf(telegaUserService.retrieveAllActivesUsers().size());
+        
+    sendBotMessageService.sendMessage(update.getMessage().getChatId().toString()
+            , String.format(STATISTIC_MESSAGE, activesUsersCount));    
     }
+    
+    
+    
 }

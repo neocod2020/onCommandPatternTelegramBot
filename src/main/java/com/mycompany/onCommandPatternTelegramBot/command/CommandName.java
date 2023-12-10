@@ -9,7 +9,8 @@ public enum CommandName {
 START("/start"),
 STOP("/stop"),
 HELP("/help"),
-NO("no command");
+NO("no command"),
+STATISTIC("/statistic");
 
 
 @Getter
