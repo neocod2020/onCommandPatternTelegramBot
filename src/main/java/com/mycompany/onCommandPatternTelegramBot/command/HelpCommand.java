@@ -16,10 +16,10 @@ public class HelpCommand implements Command {
 
     public final static String HELP_MESSAGE = String.format("<b>Available commands:</b>\n\n"
             + "<b>Start\\Stop bot's work</b>\n"
-            + "%s - start to work with the Bot\n"
-            + "%s - stop to work with the Bot\n"
-            + "%s - how to work with the Bot\n"
-            +"%s - how many users use the Bot\n",
+            + "\n%s - " + CommandDescription.START_DESCRIPTION.getDescription()
+            + "\n%s - " + CommandDescription.STOP_DESCRIPTION.getDescription()
+            + "\n%s - " + CommandDescription.HELP_DESCRIPTION.getDescription()
+            + "\n%s - " + CommandDescription.STATISTIC_DESCRIPTION.getDescription(),
             START.getCommandName(), STOP.getCommandName(), HELP.getCommandName(),
             STATISTIC.getCommandName());
 
