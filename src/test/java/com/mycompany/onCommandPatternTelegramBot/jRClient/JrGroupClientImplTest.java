@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
- */
 package com.mycompany.onCommandPatternTelegramBot.jRClient;
 
 import com.mycompany.onCommandPatternTelegramBot.jRClient.dto.GroupCountRequestArgs;
@@ -14,15 +10,12 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 
-/**
- *
- * @author ААФ
- */
-@DisplayName("Integation-level testing for JrGroupClient")
+
+@DisplayName("Integration-level testing for JrGroupClient")
 public class JrGroupClientImplTest {
-    
+
     private final JrGroupClient groupClient = new JrGroupClientImpl("https://javarush.com/api/1.0/rest");
-    
+
     /**
      * Test of getGroupList method, of class JrGroupClientImpl.
      */
@@ -52,7 +45,7 @@ public class JrGroupClientImplTest {
         assertNotNull(result);
         assertFalse(result.isEmpty());
     }
-    
+
     /**
      * Test of getGroupDiscussionList method, of class JrGroupClientImpl.
      */
@@ -70,7 +63,7 @@ public class JrGroupClientImplTest {
         assertNotNull(groupList);
         assertEquals(3, groupList.size());
     }
-    
+
     /**
      * Test of getGroupDiscussionList method, of class JrGroupClientImpl.
      */
@@ -100,9 +93,9 @@ public class JrGroupClientImplTest {
         //when        
         Integer groupCount = groupClient.getGroupCount(countRequestArgs);
         // then
-        assertEquals(26, groupCount);       
+        assertEquals(26, groupCount);
     }
-    
+
     /**
      * Test of getGroupCount method, of class JrGroupClientImpl.
      */
@@ -116,7 +109,7 @@ public class JrGroupClientImplTest {
         //when        
         Integer groupCount = groupClient.getGroupCount(countRequestArgs);
         // then
-        assertEquals(7, groupCount);       
+        assertEquals(7, groupCount);
     }
 
     /**
@@ -129,12 +122,12 @@ public class JrGroupClientImplTest {
         Integer androidGroupId = 16;
         //when
         GroupDiscussionInfo groupById = groupClient.getGroupById(androidGroupId);
-        
+
         //then
         assertNotNull(groupById);
         assertEquals(16, groupById.getId());
         assertEquals(TECH, groupById.getType());
         assertEquals("android", groupById.getKey());
     }
-    
+
 }
