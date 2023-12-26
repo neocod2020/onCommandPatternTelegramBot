@@ -1,5 +1,6 @@
 package com.mycompany.onCommandPatternTelegramBot.repository;
 
+import com.mycompany.onCommandPatternTelegramBot.entity.GroupSub;
 import com.mycompany.onCommandPatternTelegramBot.entity.TelegaUser;
 import java.util.List;
 import java.util.Optional;
@@ -53,5 +54,20 @@ public class TelegaUserRepositoryIT {
         assertTrue(saved.isPresent());
         assertEquals(telegaUser, saved.get());        
     }
-    
+    @Test
+    @Sql(scripts = {"/sql/clearDbs.sql", "/sql/fiveGroupSubForUser.sql"})
+    public void testProperlyGetAllGroupSubsForUser() {
+        System.out.println("testProperlyGetAllGroupSubsForUser");        
+        //when
+        Optional<TelegaUser> userFromDB = telegaUserRepository.findById("1");
+        //then
+        assertTrue(userFromDB.isPresent());
+        List<GroupSub> groupSubs = userFromDB.get().getGroupSubs();
+        for (int i = 0; i < groupSubs.size(); i++) {
+            assertEquals(String.format("g%s", i+1), groupSubs.get(i).getTitle());
+            assertEquals(i+1, groupSubs.get(i).getId());  
+            assertEquals(i+1, groupSubs.get(i).getLastArticleId());
+        }
+              
+    }
 }
