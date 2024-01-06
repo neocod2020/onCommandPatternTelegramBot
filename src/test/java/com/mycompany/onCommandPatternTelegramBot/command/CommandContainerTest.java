@@ -1,5 +1,7 @@
 package com.mycompany.onCommandPatternTelegramBot.command;
 
+import com.mycompany.onCommandPatternTelegramBot.jRClient.JrGroupClient;
+import com.mycompany.onCommandPatternTelegramBot.service.GroupSubService;
 import com.mycompany.onCommandPatternTelegramBot.service.SendBotMessageService;
 import com.mycompany.onCommandPatternTelegramBot.service.TelegaUserService;
 import java.util.Arrays;
@@ -18,7 +20,10 @@ public class CommandContainerTest {
     public void setUp() {
         SendBotMessageService sendBotMessageService = Mockito.mock(SendBotMessageService.class);
         TelegaUserService telegaUserService = Mockito.mock(TelegaUserService.class);
-        commandContainer = new CommandContainer(sendBotMessageService, telegaUserService);
+        JrGroupClient jrGroupClient = Mockito.mock(JrGroupClient.class);
+        GroupSubService groupSubService = Mockito.mock(GroupSubService.class);
+        commandContainer = new CommandContainer(sendBotMessageService, telegaUserService, 
+                jrGroupClient, groupSubService);
     }    
     
     /**

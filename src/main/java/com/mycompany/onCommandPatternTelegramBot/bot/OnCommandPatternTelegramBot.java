@@ -4,6 +4,8 @@ import com.mycompany.onCommandPatternTelegramBot.command.CommandContainer;
 import static com.mycompany.onCommandPatternTelegramBot.command.CommandName.NO;
 import com.mycompany.onCommandPatternTelegramBot.command.MenueList;
 import com.mycompany.onCommandPatternTelegramBot.configuration.BotConfig;
+import com.mycompany.onCommandPatternTelegramBot.jRClient.JrGroupClient;
+import com.mycompany.onCommandPatternTelegramBot.service.GroupSubService;
 import com.mycompany.onCommandPatternTelegramBot.service.SendBotMessageServiceImpl;
 import com.mycompany.onCommandPatternTelegramBot.service.TelegaUserService;
 import lombok.extern.slf4j.Slf4j;
@@ -28,13 +30,14 @@ public class OnCommandPatternTelegramBot extends TelegramLongPollingBot {
 
     private final MenueList menueList = new MenueList();
 
-    public OnCommandPatternTelegramBot(BotConfig botConfig, TelegaUserService telegaUserService) {
+    public OnCommandPatternTelegramBot(BotConfig botConfig, TelegaUserService telegaUserService, 
+            JrGroupClient jrGroupClient, GroupSubService groupSubService) {
         this.botConfig = botConfig;
         this.telegaUserService = telegaUserService;
-     //   log.info("OnCommandPatternTelegramBot");
+      //  log.info("OnCommandPatternTelegramBot");
         this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this),
-                telegaUserService);
-      //  System.out.println(menueList.getBotCommands());
+                telegaUserService, jrGroupClient, groupSubService);
+      //  System.out.println("getBotCommands: " + menueList.getBotCommands());
         SetMyCommands smc = new SetMyCommands(menueList.getBotCommands(), new BotCommandScopeDefault(), null);
         try {
             this.execute(smc);

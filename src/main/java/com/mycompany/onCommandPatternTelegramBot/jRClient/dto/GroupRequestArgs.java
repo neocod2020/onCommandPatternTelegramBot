@@ -11,37 +11,37 @@ import lombok.Getter;
  */
 @Builder
 @Getter
-public class GroupRequestArgs { 
-    
+public class GroupRequestArgs {
+
     private final String query;
     private final GroupInfoType type;
     private final GroupFilter filter;
 
     /**
      * Specified where to start getting groups
-     */    
+     */
     private final Integer offset;
-    
+
     /**
      * Limited number of groups
-     */    
+     */
     private final Integer limit;
-     
-    public Map populateQueries(){
+
+    public Map populateQueries() {
         Map queries = new HashMap();
-        if(nonNull(query)){
+        if (nonNull(query)) {
             queries.put("query", query);
         }
-        if(nonNull(type)){
+        if (nonNull(type)) {
             queries.put("type", type);
         }
-        if(nonNull(filter)){
+        if (nonNull(filter)) {
             queries.put("filter", filter);
         }
-        if(nonNull(offset)){
+        if (nonNull(offset)) {
             queries.put("offset", offset);
         }
-        if(nonNull(limit)){
+        if (nonNull(limit)) {
             queries.put("limit", limit);
         }
         return queries;

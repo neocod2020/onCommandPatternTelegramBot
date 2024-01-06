@@ -7,7 +7,9 @@ import com.mycompany.onCommandPatternTelegramBot.repository.GroupSubRepository;
 import jakarta.ws.rs.NotFoundException;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class GroupSubServiceImpl implements GroupSubService {
 
     private final GroupSubRepository groupSubRepository;

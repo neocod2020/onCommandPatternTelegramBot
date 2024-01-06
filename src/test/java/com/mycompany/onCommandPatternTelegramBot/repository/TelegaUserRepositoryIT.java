@@ -67,7 +67,6 @@ public class TelegaUserRepositoryIT {
             assertEquals(String.format("g%s", i+1), groupSubs.get(i).getTitle());
             assertEquals(i+1, groupSubs.get(i).getId());  
             assertEquals(i+1, groupSubs.get(i).getLastArticleId());
-        }
-              
+        }              
     }
 }

@@ -5,14 +5,18 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public enum CommandName {
 
     START("/start"),
     STOP("/stop"),
     HELP("/help"),
     NO("no command"),
-    STATISTIC("/statistic");
+    STATISTIC("/statistic"),
+    LIST_GROUP_SUB("/list"),
+    ADD_GROUP_SUB("/add");
 
     @Getter
     private final String commandName;

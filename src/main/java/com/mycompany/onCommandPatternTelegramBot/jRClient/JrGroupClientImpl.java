@@ -26,7 +26,7 @@ public class JrGroupClientImpl implements JrGroupClient {
     public List<GroupInfo> getGroupList(GroupRequestArgs requestArgs) {
         return Unirest.get(jrApiGroupPath)
                 .queryString(requestArgs.populateQueries())
-                .asObject(new GenericType<List<GroupInfo>>(){                    
+                .asObject(new GenericType<List<GroupInfo>>() {
                 })
                 .getBody();
     }
@@ -35,7 +35,7 @@ public class JrGroupClientImpl implements JrGroupClient {
     public List<GroupDiscussionInfo> getGroupDiscussionList(GroupRequestArgs requestArgs) {
         return Unirest.get(jrApiGroupPath)
                 .queryString(requestArgs.populateQueries())
-                .asObject(new GenericType<List<GroupDiscussionInfo>>(){                    
+                .asObject(new GenericType<List<GroupDiscussionInfo>>() {
                 })
                 .getBody();
     }
@@ -43,18 +43,18 @@ public class JrGroupClientImpl implements JrGroupClient {
     @Override
     public Integer getGroupCount(GroupCountRequestArgs countRequestArgs) {
         return Integer.valueOf(
-        Unirest.get(String.format("%s/count", jrApiGroupPath))
-        .queryString(countRequestArgs.populateQueries())
-        .asString()
-        .getBody()
+                Unirest.get(String.format("%s/count", jrApiGroupPath))
+                        .queryString(countRequestArgs.populateQueries())
+                        .asString()
+                        .getBody()
         );
-                }
+    }
 
     @Override
     public GroupDiscussionInfo getGroupById(Integer id) {
         return Unirest.get(String.format("%s/group%s", jrApiGroupPath, id.toString()))
-         .asObject(GroupDiscussionInfo.class)
-        .getBody();
-       }
+                .asObject(GroupDiscussionInfo.class)
+                .getBody();
+    }
 
 }
