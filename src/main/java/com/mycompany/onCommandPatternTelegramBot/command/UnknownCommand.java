@@ -7,9 +7,9 @@ import org.telegram.telegrambots.meta.api.objects.Update;
  * Unknown (@link Command)
  */
 public class UnknownCommand implements Command {
-    
+
     private final SendBotMessageService sendBotMessageService;
-    
+
     public final static String UNKNOWN_MESSAGE = "Can't recognize your command\n"
             + "Enter /help to see command menue";
 
@@ -19,7 +19,7 @@ public class UnknownCommand implements Command {
 
     @Override
     public void execute(Update update) {
-    sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), UNKNOWN_MESSAGE);
-    }  
-    
+        sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), UNKNOWN_MESSAGE);
+    }
+
 }

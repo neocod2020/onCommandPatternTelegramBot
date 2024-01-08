@@ -1,14 +1,13 @@
 package com.mycompany.onCommandPatternTelegramBot.command;
 
+import com.mycompany.onCommandPatternTelegramBot.jRClient.JrGroupClient;
+import com.mycompany.onCommandPatternTelegramBot.service.GroupSubService;
 import com.mycompany.onCommandPatternTelegramBot.service.SendBotMessageService;
+import com.mycompany.onCommandPatternTelegramBot.service.TelegaUserService;
 import java.util.Arrays;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.mockito.Mockito;
 
@@ -20,7 +19,11 @@ public class CommandContainerTest {
     @BeforeEach
     public void setUp() {
         SendBotMessageService sendBotMessageService = Mockito.mock(SendBotMessageService.class);
-        commandContainer = new CommandContainer(sendBotMessageService);
+        TelegaUserService telegaUserService = Mockito.mock(TelegaUserService.class);
+        JrGroupClient jrGroupClient = Mockito.mock(JrGroupClient.class);
+        GroupSubService groupSubService = Mockito.mock(GroupSubService.class);
+        commandContainer = new CommandContainer(sendBotMessageService, telegaUserService, 
+                jrGroupClient, groupSubService);
     }    
     
     /**
