@@ -33,15 +33,12 @@ public class OnCommandPatternTelegramBot extends TelegramLongPollingBot {
     public OnCommandPatternTelegramBot(BotConfig botConfig, TelegaUserService telegaUserService, 
             JrGroupClient jrGroupClient, GroupSubService groupSubService) {
         this.botConfig = botConfig;
-        this.telegaUserService = telegaUserService;
-      //  log.info("OnCommandPatternTelegramBot");
+        this.telegaUserService = telegaUserService;      
         this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this),
-                telegaUserService, jrGroupClient, groupSubService);
-      //  System.out.println("getBotCommands: " + menueList.getBotCommands());
+                telegaUserService, jrGroupClient, groupSubService);      
         SetMyCommands smc = new SetMyCommands(menueList.getBotCommands(), new BotCommandScopeDefault(), null);
         try {
-            this.execute(smc);
-      //      log.info("execute(new SetMyCommands)");
+            this.execute(smc);      
         } catch (TelegramApiException ex) {
             log.error("Error executing menue of command " + ex.getMessage());
         }

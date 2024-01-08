@@ -17,7 +17,9 @@ public enum CommandDescription {
     HELP_DESCRIPTION("help you how to work with the bot"),
     STATISTIC_DESCRIPTION("get statistic how many users use the bot"),
     LIST_GROUP_SUB("get a list of groups you are subscribed to"),
-    ADD_GROUP_SUB("add subscribe to the group of articles");
+    ADD_GROUP_SUB("add subscription to the group of articles"), 
+    DELETE_GROUP_SUB("delete subscription to the group of articles");
+    
 
     @Getter
     public final String description;

@@ -31,7 +31,8 @@ abstract class AbstractCommandTest {
         //given
         Long chatId = 12336544789L;
 
-        Update update = new Update();
+        Update update = prepareUpdate(chatId, getCommandName());
+        
         Message message = Mockito.mock(Message.class);
         Mockito.when(message.getChatId()).thenReturn(chatId);
         Mockito.when(message.getText()).thenReturn(getCommandName());
@@ -46,8 +47,15 @@ abstract class AbstractCommandTest {
         getCommand().execute(update);
         
         //then
-        Mockito.verify(onCommandPatternTelegramBot).execute(sendMessage);
-        
+        Mockito.verify(onCommandPatternTelegramBot).execute(sendMessage);        
     }    
+    public static Update prepareUpdate(Long chatId, String commandName){
+        Update update = new Update();
+        Message message = Mockito.mock(Message.class);
+        Mockito.when(message.getChatId()).thenReturn(chatId);
+        Mockito.when(message.getText()).thenReturn(commandName);
+        update.setMessage(message);
+        return update;
+    }
     
 }

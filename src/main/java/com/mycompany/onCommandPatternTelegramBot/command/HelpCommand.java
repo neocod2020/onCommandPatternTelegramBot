@@ -1,6 +1,7 @@
 package com.mycompany.onCommandPatternTelegramBot.command;
 
 import static com.mycompany.onCommandPatternTelegramBot.command.CommandName.ADD_GROUP_SUB;
+import static com.mycompany.onCommandPatternTelegramBot.command.CommandName.DELETE_GROUP_SUB;
 import static com.mycompany.onCommandPatternTelegramBot.command.CommandName.HELP;
 import static com.mycompany.onCommandPatternTelegramBot.command.CommandName.LIST_GROUP_SUB;
 import static com.mycompany.onCommandPatternTelegramBot.command.CommandName.START;
@@ -22,12 +23,13 @@ public class HelpCommand implements Command {
             + "\n%s - " + CommandDescription.STOP_DESCRIPTION.getDescription()
             + "\n\n<b>Working with group subscriptions:</b>\n"
             + "\n%s - " + CommandDescription.ADD_GROUP_SUB.getDescription()
+            + "\n%s - " + CommandDescription.DELETE_GROUP_SUB.getDescription()
             + "\n%s - " + CommandDescription.LIST_GROUP_SUB.getDescription()
             + "\n\n%s - " + CommandDescription.HELP_DESCRIPTION.getDescription()
             + "\n%s - " + CommandDescription.STATISTIC_DESCRIPTION.getDescription(),
             START.getCommandName(), STOP.getCommandName(), ADD_GROUP_SUB.getCommandName(),
-             LIST_GROUP_SUB.getCommandName(), HELP.getCommandName(),
-            STATISTIC.getCommandName());
+            DELETE_GROUP_SUB.getCommandName(), LIST_GROUP_SUB.getCommandName(),
+            HELP.getCommandName(), STATISTIC.getCommandName());
 
     public HelpCommand(SendBotMessageService sendBotMessageService) {
         this.sendBotMessageService = sendBotMessageService;

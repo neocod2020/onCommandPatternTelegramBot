@@ -16,7 +16,8 @@ public enum CommandName {
     NO("no command"),
     STATISTIC("/statistic"),
     LIST_GROUP_SUB("/list"),
-    ADD_GROUP_SUB("/add");
+    ADD_GROUP_SUB("/add"),
+    DELETE_GROUP_SUB("/delete");
 
     @Getter
     private final String commandName;

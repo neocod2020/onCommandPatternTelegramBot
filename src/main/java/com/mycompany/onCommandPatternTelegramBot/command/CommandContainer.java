@@ -3,6 +3,7 @@ package com.mycompany.onCommandPatternTelegramBot.command;
 
 import com.google.common.collect.ImmutableMap;
 import static com.mycompany.onCommandPatternTelegramBot.command.CommandName.ADD_GROUP_SUB;
+import static com.mycompany.onCommandPatternTelegramBot.command.CommandName.DELETE_GROUP_SUB;
 import static com.mycompany.onCommandPatternTelegramBot.command.CommandName.HELP;
 import static com.mycompany.onCommandPatternTelegramBot.command.CommandName.LIST_GROUP_SUB;
 import static com.mycompany.onCommandPatternTelegramBot.command.CommandName.NO;
@@ -32,6 +33,7 @@ public class CommandContainer {
                 .put(STATISTIC.getCommandName(), new StatistCommand(sendBotMessageService, telegaUserService))
                 .put(LIST_GROUP_SUB.getCommandName(), new ListGroupSubCommand(sendBotMessageService, telegaUserService))
                 .put(ADD_GROUP_SUB.getCommandName(), new AddGroupSubCommand(sendBotMessageService, jrGroupClient, groupSubService))
+                .put(DELETE_GROUP_SUB.getCommandName(), new DeleteGroupSubCommand(sendBotMessageService, telegaUserService, groupSubService))
                 .build();
         unknownCommand = new UnknownCommand(sendBotMessageService);
     }

@@ -8,10 +8,12 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import java.util.List;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Table(name="tg_user")
 @Data
+@EqualsAndHashCode(exclude = "groupSubs")
 public class TelegaUser {
     
     @Id
