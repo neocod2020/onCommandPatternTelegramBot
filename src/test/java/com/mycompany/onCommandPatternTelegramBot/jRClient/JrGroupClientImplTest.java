@@ -1,10 +1,10 @@
 package com.mycompany.onCommandPatternTelegramBot.jRClient;
 
-import com.mycompany.onCommandPatternTelegramBot.jRClient.dto.GroupCountRequestArgs;
-import com.mycompany.onCommandPatternTelegramBot.jRClient.dto.GroupDiscussionInfo;
-import com.mycompany.onCommandPatternTelegramBot.jRClient.dto.GroupInfo;
-import static com.mycompany.onCommandPatternTelegramBot.jRClient.dto.GroupInfoType.TECH;
-import com.mycompany.onCommandPatternTelegramBot.jRClient.dto.GroupRequestArgs;
+import com.mycompany.onCommandPatternTelegramBot.jRClient.dto_group_subscription.GroupCountRequestArgs;
+import com.mycompany.onCommandPatternTelegramBot.jRClient.dto_group_subscription.GroupDiscussionInfo;
+import com.mycompany.onCommandPatternTelegramBot.jRClient.dto_group_subscription.GroupInfo;
+import static com.mycompany.onCommandPatternTelegramBot.jRClient.dto_group_subscription.GroupInfoType.TECH;
+import com.mycompany.onCommandPatternTelegramBot.jRClient.dto_group_subscription.GroupRequestArgs;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,8 +13,10 @@ import org.junit.jupiter.api.DisplayName;
 
 @DisplayName("Integration-level testing for JrGroupClient")
 public class JrGroupClientImplTest {
-
-    private final JrGroupClient groupClient = new JrGroupClientImpl("https://javarush.com/api/1.0/rest");
+    
+    public static final String JAVARUSH_API_PATH = "https://javarush.com/api/1.0/rest";
+    
+    private final JrGroupClient groupClient = new JrGroupClientImpl(JAVARUSH_API_PATH);
 
     /**
      * Test of getGroupList method, of class JrGroupClientImpl.

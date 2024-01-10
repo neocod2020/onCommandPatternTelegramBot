@@ -1,9 +1,9 @@
 package com.mycompany.onCommandPatternTelegramBot.jRClient;
 
-import com.mycompany.onCommandPatternTelegramBot.jRClient.dto.GroupCountRequestArgs;
-import com.mycompany.onCommandPatternTelegramBot.jRClient.dto.GroupDiscussionInfo;
-import com.mycompany.onCommandPatternTelegramBot.jRClient.dto.GroupInfo;
-import com.mycompany.onCommandPatternTelegramBot.jRClient.dto.GroupRequestArgs;
+import com.mycompany.onCommandPatternTelegramBot.jRClient.dto_group_subscription.GroupCountRequestArgs;
+import com.mycompany.onCommandPatternTelegramBot.jRClient.dto_group_subscription.GroupDiscussionInfo;
+import com.mycompany.onCommandPatternTelegramBot.jRClient.dto_group_subscription.GroupInfo;
+import com.mycompany.onCommandPatternTelegramBot.jRClient.dto_group_subscription.GroupRequestArgs;
 import java.util.List;
 import kong.unirest.GenericType;
 import org.springframework.beans.factory.annotation.Value;
