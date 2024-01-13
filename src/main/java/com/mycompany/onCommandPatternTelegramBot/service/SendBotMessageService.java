@@ -1,5 +1,7 @@
 package com.mycompany.onCommandPatternTelegramBot.service;
 
+import java.util.List;
+
 /**
  *
  * Service for sending messages via telegram bot.
@@ -13,4 +15,6 @@ public interface SendBotMessageService {
      */
     
     void sendMessage(String chatId, String message);
+
+    public void sendMessage(String chatId, List<String> messages);
 }

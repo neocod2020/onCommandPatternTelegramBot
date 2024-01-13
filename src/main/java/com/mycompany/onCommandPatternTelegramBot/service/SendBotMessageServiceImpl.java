@@ -1,6 +1,7 @@
 package com.mycompany.onCommandPatternTelegramBot.service;
 
 import com.mycompany.onCommandPatternTelegramBot.bot.OnCommandPatternTelegramBot;
+import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,6 +32,12 @@ public class SendBotMessageServiceImpl implements SendBotMessageService {
         } catch (TelegramApiException ex) {
             log.error("Error sending message " + ex.getMessage());
         }
+    }
+
+    @Override
+    public void sendMessage(String chatId, List<String> messages) {
+    if(messages.isEmpty()) return;
+    messages.forEach(m -> sendMessage(chatId, m));
     }
     
 }
