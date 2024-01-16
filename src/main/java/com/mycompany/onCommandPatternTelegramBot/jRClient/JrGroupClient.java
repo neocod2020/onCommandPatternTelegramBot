@@ -41,4 +41,6 @@ public interface JrGroupClient {
      * @return {@link GroupDiscussionInfo} object.
      */
     GroupDiscussionInfo getGroupById(Integer id);
+    
+    Integer findLastPostId(Integer groupSubId);
 }

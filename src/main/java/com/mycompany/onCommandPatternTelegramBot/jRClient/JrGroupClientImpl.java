@@ -4,7 +4,9 @@ import com.mycompany.onCommandPatternTelegramBot.jRClient.dto_group_subscription
 import com.mycompany.onCommandPatternTelegramBot.jRClient.dto_group_subscription.GroupDiscussionInfo;
 import com.mycompany.onCommandPatternTelegramBot.jRClient.dto_group_subscription.GroupInfo;
 import com.mycompany.onCommandPatternTelegramBot.jRClient.dto_group_subscription.GroupRequestArgs;
+import com.mycompany.onCommandPatternTelegramBot.jRClient.dto_post.PostInfo;
 import java.util.List;
+import java.util.Optional;
 import kong.unirest.GenericType;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -17,9 +19,11 @@ import kong.unirest.Unirest;
 public class JrGroupClientImpl implements JrGroupClient {
 
     private final String jrApiGroupPath;
+    private final String jrApiPostPath;
 
     public JrGroupClientImpl(@Value("${jr.api.path}") String jrApi) {
         this.jrApiGroupPath = jrApi + "/groups";
+        this.jrApiPostPath = jrApi + "/posts";
     }
 
     @Override
@@ -55,6 +59,19 @@ public class JrGroupClientImpl implements JrGroupClient {
         return Unirest.get(String.format("%s/group%s", jrApiGroupPath, id.toString()))
                 .asObject(GroupDiscussionInfo.class)
                 .getBody();
+    }
+
+    @Override
+    public Integer findLastPostId(Integer groupSubId) {
+        
+        List<PostInfo> posts = Unirest.get(jrApiPostPath)
+                .queryString("order", "NEW")
+                .queryString("groupKid", groupSubId.toString())
+                .queryString("limit", "1")
+                .asObject(new GenericType<List<PostInfo>>(){
+                })
+                .getBody();
+        return posts.isEmpty() ? 0 : Optional.ofNullable(posts.get(0)).map(PostInfo::getId).orElse(0);
     }
 
 }
