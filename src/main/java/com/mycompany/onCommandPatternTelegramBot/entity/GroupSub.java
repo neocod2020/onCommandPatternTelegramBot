@@ -43,4 +43,9 @@ public class GroupSub {
         }
         users.add(telegaUser);
     }
+
+    public Integer getLastArticleId() {
+        return lastArticleId == null ? 0 : lastArticleId;
+    }
+    
 }

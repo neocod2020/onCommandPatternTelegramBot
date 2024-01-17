@@ -1,4 +1,4 @@
-package com.mycompany.onCommandPatternTelegramBot.jRClient.dto;
+package com.mycompany.onCommandPatternTelegramBot.jRClient.dto_group_subscription;
 
 import lombok.Data;
 import lombok.ToString;

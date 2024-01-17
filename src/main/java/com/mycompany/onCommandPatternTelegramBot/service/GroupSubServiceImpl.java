@@ -2,9 +2,10 @@ package com.mycompany.onCommandPatternTelegramBot.service;
 
 import com.mycompany.onCommandPatternTelegramBot.entity.GroupSub;
 import com.mycompany.onCommandPatternTelegramBot.entity.TelegaUser;
-import com.mycompany.onCommandPatternTelegramBot.jRClient.dto.GroupDiscussionInfo;
+import com.mycompany.onCommandPatternTelegramBot.jRClient.dto_group_subscription.GroupDiscussionInfo;
 import com.mycompany.onCommandPatternTelegramBot.repository.GroupSubRepository;
 import jakarta.ws.rs.NotFoundException;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,5 +53,12 @@ public class GroupSubServiceImpl implements GroupSubService {
     public GroupSub save(GroupSub groupSub) {
         return groupSubRepository.save(groupSub);
     }
+
+    @Override
+    public List<GroupSub> findAll() {
+        return groupSubRepository.findAll();
+    }
+
+    
 
 }
