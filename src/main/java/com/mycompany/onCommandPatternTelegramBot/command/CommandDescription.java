@@ -15,8 +15,8 @@ public enum CommandDescription {
     START_DESCRIPTION("start to work with the bot"),
     STOP_DESCRIPTION("stop to work with the bot"),
     HELP_DESCRIPTION("help you how to work with the bot"),
-    STATISTIC_DESCRIPTION("get statistic how many users use the bot"),
-    LIST_GROUP_SUB("get a list of groups you are subscribed to"),
+    STATISTIC_DESCRIPTION("statistic how many users use the bot, available for admin only"),
+    LIST_GROUP_SUB("list of groups you are subscribed to"),
     ADD_GROUP_SUB("add subscription to the group of articles"), 
     DELETE_GROUP_SUB("delete subscription to the group of articles");
     

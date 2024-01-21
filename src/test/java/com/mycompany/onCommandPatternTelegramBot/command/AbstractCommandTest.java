@@ -3,6 +3,7 @@ package com.mycompany.onCommandPatternTelegramBot.command;
 import com.mycompany.onCommandPatternTelegramBot.bot.OnCommandPatternTelegramBot;
 import com.mycompany.onCommandPatternTelegramBot.service.SendBotMessageService;
 import com.mycompany.onCommandPatternTelegramBot.service.SendBotMessageServiceImpl;
+import com.mycompany.onCommandPatternTelegramBot.service.StatisticsService;
 import com.mycompany.onCommandPatternTelegramBot.service.TelegaUserService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -17,6 +18,7 @@ abstract class AbstractCommandTest {
     protected OnCommandPatternTelegramBot onCommandPatternTelegramBot = Mockito.mock(OnCommandPatternTelegramBot.class);
     protected SendBotMessageService sendBotMessageService = new SendBotMessageServiceImpl(onCommandPatternTelegramBot);
     protected TelegaUserService telegaUserService = Mockito.mock(TelegaUserService.class);
+    protected StatisticsService statisticsService = Mockito.mock(StatisticsService.class);
     
     abstract String getCommandName();
     abstract String getCommandMessage();
