@@ -33,4 +33,13 @@ public class TelegaUserServiceImpl implements TelegaUserService {
         return telegaUserRepository.findById(chatId);
     }
 
+    @Override
+    public List<TelegaUser> findAllActivesUsers() {
+        return telegaUserRepository.findAllByActivesTrue();
+    }
+
+    @Override
+    public List<TelegaUser> findAllInActivesUsers() {
+        return telegaUserRepository.findAllByActivesFalse();
+    }
 }

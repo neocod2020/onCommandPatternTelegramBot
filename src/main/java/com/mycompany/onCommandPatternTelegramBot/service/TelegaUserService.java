@@ -13,5 +13,9 @@ public interface TelegaUserService {
     void save(TelegaUser telegaUser);
     List<TelegaUser> retrieveAllActivesUsers();
     Optional<TelegaUser> findByChatId(String chatId);
+
+    public List<TelegaUser> findAllActivesUsers();
+
+    public List<TelegaUser> findAllInActivesUsers();
     
 }

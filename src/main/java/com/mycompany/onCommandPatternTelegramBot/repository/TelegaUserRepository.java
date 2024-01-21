@@ -9,5 +9,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * {@link Repository} for handling {@link TelegaUser} entity.
  */
 public interface TelegaUserRepository extends JpaRepository<TelegaUser, String> {
-    List<TelegaUser> findAllByActivesTrue();
+    
+    List<TelegaUser> findAllByActivesTrue();       
+
+    List<TelegaUser> findAllByActivesFalse();
 }
