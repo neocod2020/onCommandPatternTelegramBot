@@ -13,17 +13,11 @@ import org.telegram.telegrambots.meta.api.objects.commands.BotCommand;
 public class MenueList {
 
     private final List<BotCommand> botCommands = new ArrayList<>();
-    private final List<String> commandNames = CommandName.getNames();
-    private final List<String> descriptions = CommandDescription.getDescriptions();
 
     public List<BotCommand> getBotCommands() {
-        for (String s : commandNames) {
-            for (String s1 : descriptions) {
-                if (s1.contains(s.substring(1))) {                    
-                    botCommands.add(new BotCommand(s, s1));
-                }
-            }
-        }        
+        for (CommandName s : CommandName.values()) {
+            botCommands.add(new BotCommand(s.getSimpleName(), s.getDescription()));
+        }
         return botCommands;
     }
 }

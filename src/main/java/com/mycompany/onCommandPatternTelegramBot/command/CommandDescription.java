@@ -1,8 +1,5 @@
 package com.mycompany.onCommandPatternTelegramBot.command;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
@@ -27,11 +24,5 @@ public enum CommandDescription {
     private CommandDescription(String description) {
         this.description = description;
     }
-
-    public static List<String> getDescriptions() {
-        List<String> getText = Arrays.stream(values())
-                .map(s -> s.getDescription())
-                .collect(Collectors.toList());
-        return getText;
-    }
+    
 }

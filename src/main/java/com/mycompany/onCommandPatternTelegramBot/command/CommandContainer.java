@@ -34,14 +34,14 @@ public class CommandContainer {
             JrGroupClient jrGroupClient, GroupSubService groupSubService, List<String> admins, 
             StatisticsService statisticsService) {
         commandMap = ImmutableMap.<String, Command>builder()
-                .put(START.getCommandName(), new StartCommand(sendBotMessageService, telegaUserService))
-                .put(STOP.getCommandName(), new StopCommand(sendBotMessageService, telegaUserService))
-                .put(HELP.getCommandName(), new HelpCommand(sendBotMessageService))
-                .put(NO.getCommandName(), new NoCommand(sendBotMessageService))
-                .put(STATISTIC.getCommandName(), new StatistCommand(sendBotMessageService, statisticsService))
-                .put(LIST_GROUP_SUB.getCommandName(), new ListGroupSubCommand(sendBotMessageService, telegaUserService))
-                .put(ADD_GROUP_SUB.getCommandName(), new AddGroupSubCommand(sendBotMessageService, jrGroupClient, groupSubService))
-                .put(DELETE_GROUP_SUB.getCommandName(), new DeleteGroupSubCommand(sendBotMessageService, telegaUserService, groupSubService))
+                .put(START.getSimpleName(), new StartCommand(sendBotMessageService, telegaUserService))
+                .put(STOP.getSimpleName(), new StopCommand(sendBotMessageService, telegaUserService))
+                .put(HELP.getSimpleName(), new HelpCommand(sendBotMessageService))
+                .put(NO.getSimpleName(), new NoCommand(sendBotMessageService))
+                .put(STATISTIC.getSimpleName(), new StatistCommand(sendBotMessageService, statisticsService))
+                .put(LIST_GROUP_SUB.getSimpleName(), new ListGroupSubCommand(sendBotMessageService, telegaUserService))
+                .put(ADD_GROUP_SUB.getSimpleName(), new AddGroupSubCommand(sendBotMessageService, jrGroupClient, groupSubService))
+                .put(DELETE_GROUP_SUB.getSimpleName(), new DeleteGroupSubCommand(sendBotMessageService, telegaUserService, groupSubService))
                 .build();
         unknownCommand = new UnknownCommand(sendBotMessageService);
         this.admins = admins;

@@ -1,8 +1,5 @@
 package com.mycompany.onCommandPatternTelegramBot.command;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -10,14 +7,14 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public enum CommandName {
 
-    START("/start"),
-    STOP("/stop"),
-    HELP("/help"),
+    START("/start " + CommandDescription.START_DESCRIPTION.getDescription()),
+    STOP("/stop " + CommandDescription.STOP_DESCRIPTION.getDescription()),
+    HELP("/help " + CommandDescription.HELP_DESCRIPTION.getDescription()),
     NO("no command"),
-    STATISTIC("/statistic"),
-    LIST_GROUP_SUB("/list"),
-    ADD_GROUP_SUB("/add"),
-    DELETE_GROUP_SUB("/delete");
+    STATISTIC("/statistic " + CommandDescription.STATISTIC_DESCRIPTION.getDescription()),
+    LIST_GROUP_SUB("/list " + CommandDescription.LIST_GROUP_SUB.getDescription()),
+    ADD_GROUP_SUB("/add " + CommandDescription.ADD_GROUP_SUB.getDescription()),
+    DELETE_GROUP_SUB("/delete " + CommandDescription.DELETE_GROUP_SUB.getDescription());
 
     @Getter
     private final String commandName;
@@ -26,12 +23,15 @@ public enum CommandName {
         this.commandName = commandName;
     }
 
-    public static List<String> getNames() {
-        List<String> getNames = Arrays.stream(values())
-                .filter(v -> v.getCommandName().startsWith("/"))
-                .map(s -> s.getCommandName())
-                .collect(Collectors.toList());
-        return getNames;
+    public String getSimpleName(){
+        String name = "";
+        if(commandName.startsWith("/")){
+            name = commandName.split(" ")[0].trim();
+        }
+        return name;
     }
+    public String getDescription(){
+        return  commandName.substring(commandName.indexOf(" ")).trim(); 
+    }   
 
 }
